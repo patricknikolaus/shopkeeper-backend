@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
    # games
-   get "/games" => "games#index"
-   get "/games/:id" => "games#show"
+   post "/games" => "games#index"
+   post "/games/:id" => "games#show"
  
    # login
    post "/sessions" => "sessions#create"
