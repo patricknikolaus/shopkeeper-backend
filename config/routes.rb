@@ -6,7 +6,7 @@ Rails.application.routes.draw do
    # login
    post "/sessions" => "sessions#create"
  
-   #wishlistgames
+   #wishlist
    get "/wishlists" => "wishlists#index"
    get "/wishlists/:id" => "wishlists#show"
    delete "/wishlists/:id" => "wishlists#destroy"

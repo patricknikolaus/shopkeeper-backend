@@ -4,4 +4,10 @@ class GamesController < ApplicationController
 
     render json: response.parse(:json)
   end
+
+  def show
+    response = HTTP.headers("Authorization" => "Bearer ", "Client-ID" => "").post("https://api.igdb.com/v4/games", :body => 'fields id, name, rating, platforms.name, genres.name, cover.url, similar_games.name, summary, release_dates.y; where id = %{game_id};' % {game_id:params[:id]})
+
+    render json: response.parse(:json)
+  end
 end
