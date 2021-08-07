@@ -9,6 +9,7 @@ Rails.application.routes.draw do
    #wishlist
    get "/wishlists" => "wishlists#index"
    get "/wishlists/:id" => "wishlists#show"
+   post "/wishlists" => "wishlists#create"
    delete "/wishlists/:id" => "wishlists#destroy"
  
    # users

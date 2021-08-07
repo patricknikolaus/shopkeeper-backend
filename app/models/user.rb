@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_many :wishlists
-  has_many :games, through: :wishlists
 
   has_secure_password
   validates :email, presence: true, uniqueness: true
