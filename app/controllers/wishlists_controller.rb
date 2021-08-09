@@ -19,7 +19,8 @@ class WishlistsController < ApplicationController
       user_id: current_user.id,
       game_id: params[:game_id],
       image_url: params[:image_url],
-      title: params[:title]
+      title: params[:title],
+      on_sale: params[:on_sale]
     )
     user = User.find_by(id: current_user.id)
     if user.wishlists.find_by(game_id: params[:game_id])
