@@ -14,4 +14,8 @@ Rails.application.routes.draw do
  
    # users
    post "/users" => "users#create"
+
+   #covers
+   get "/covers" => "covers#index"
+   get "/covers/:id" => "covers#show"
 end
