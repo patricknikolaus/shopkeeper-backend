@@ -1,6 +1,11 @@
 class GamesController < ApplicationController
   def index
-    response = HTTP.headers("Authorization" => "Bearer #{Rails.application.credentials.igdb_key[:access_token]}", "Client-ID" => "#{Rails.application.credentials.igdb_key[:client_id]}").post("https://api.igdb.com/v4/games", :body => 'fields id, name, platforms, genres.name, cover.url; search "%{game_name}"; where release_dates.platform = 6; limit 50;' % {game_name:params[:search]})
+    random = rand(45000)
+    if params[:search] == ""
+      response = HTTP.headers("Authorization" => "Bearer #{Rails.application.credentials.igdb_key[:access_token]}", "Client-ID" => "#{Rails.application.credentials.igdb_key[:client_id]}").post("https://api.igdb.com/v4/games", :body => "fields id, name, platforms, genres.name, cover.url; where platforms = 6 & themes != [42]; limit 20; offset #{random};")
+    else
+      response = HTTP.headers("Authorization" => "Bearer #{Rails.application.credentials.igdb_key[:access_token]}", "Client-ID" => "#{Rails.application.credentials.igdb_key[:client_id]}").post("https://api.igdb.com/v4/games", :body => 'fields id, name, platforms, genres.name, cover.url; where platforms = (1,6); search "%{game_name}"; limit 50;' % {game_name:params[:search]})
+    end
 
     render json: response.parse(:json)
   end
@@ -10,6 +15,4 @@ class GamesController < ApplicationController
 
     render json: response.parse(:json)
   end
-
-
 end
