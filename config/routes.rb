@@ -2,6 +2,7 @@ Rails.application.routes.draw do
    # games
    post "/games" => "games#index"
    post "/games/:id" => "games#show"
+   # get "games/twitch" => "games#twitch"
  
    # login
    post "/sessions" => "sessions#create"
@@ -18,4 +19,8 @@ Rails.application.routes.draw do
    #covers
    get "/covers" => "covers#index"
    get "/covers/:id" => "covers#show"
+
+   #twitch
+   get "/twitch" => "twitch#index"
+   get "/twitch/channel" => "twitch#channel"
 end
