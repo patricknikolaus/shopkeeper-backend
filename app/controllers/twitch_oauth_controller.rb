@@ -1,0 +1,3 @@
+class TwitchOauthController < ApplicationController
+  
+end

@@ -23,4 +23,7 @@ Rails.application.routes.draw do
    #twitch
    get "/twitch" => "twitch#index"
    get "/twitch/channel" => "twitch#channel"
+
+   #oauth
+   get "/callback" => "twitch_oauth#initialize"
 end
