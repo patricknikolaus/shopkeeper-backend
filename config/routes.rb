@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
    # games
-   post "/games" => "games#index"
+   post "/" => "games#index"
    post "/games/:id" => "games#show"
    # get "games/twitch" => "games#twitch"
  
